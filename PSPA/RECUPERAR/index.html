@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PSPA</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body style="overflow-y:hidden">
+
+    <section id="contenido">
+        <div id="BotonIn" > </div>
+        <div id="MenuHorizontal"> 
+            <div id="Boton" tabindex="1" onclick="test()" role="button"> </div>
+            <div id="Inicio" tabindex="1" onclick="home()" role="button"> </div>
+        </div>
+
+        
+        <section id="ContHome">
+            <div id="menus">
+                <ul id="Botones" >
+                    <li><div class="button"><a href="#"><p class="pp1">¿QUE SON LAS DROGAS?</p></a></div></li>
+                    <li><div class="button"><a href="#"><p class="pp1">¿POR QUE SE CONSUMEN?</p></a></div></li>
+                    <li><div class="button"><a href="#"><p class="pp1">CONSECUENCIAS DEL CONSUMO</p></a></div></li>
+                    <li><div class="button"><a href="#"><p class="pp1">TIPOS DE DROGAS</p></a></div></li>
+                    <li><div class="button"><a href="#"><p class="pp1">COMO EVITAR EL CONSUMO</p></a></div></li>
+                </ul>
+            </div>
+            <section id="content">
+                <h1>RECUPERAR CONTRASEÑA</h1>
+                <div><input class="correo" placeholder="CORREO"></div>
+                </div>
+                <div id="register" tabindex="1" onclick="send()"><p class="pp2">ENVIAR CORREO DE RECUPERACIÓN</p></div>
+            </section>
+        </section>
+    </section>
+
+</body>
+<script>
+    i=1
+    function mensaje() {
+        alert("Funciona el boton c:");
+    }
+    function test() {
+        if(i==0) {
+            slide();
+            setTimeout(hide,600);
+            i=1;
+        }
+        else {
+            show();
+            setTimeout(slideback,200)
+            i=0
+        }
+    }
+    function slide() {
+        document.getElementById('menus').style.width = '0px';
+    }
+    function slideback() {
+        document.getElementById('menus').style.width = '280px';
+        document.getElementById('Botones').style.display = 'block';
+    }
+    function hide() {
+        document.getElementById('menus').style.display = 'none';
+        document.getElementById('Botones').style.display = 'none';
+    }
+    function show() {
+        document.getElementById('menus').style.display = 'block';
+    }
+    function home() {
+        window.location.href = "/HOME/index.html"
+    }
+    function send() {
+        alert("Correo de recuperación enviado")
+        setTimeout(home,1500)
+
+    }
+</script>
+</html>

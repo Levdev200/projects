@@ -1,0 +1,162 @@
+html {
+    background-color: #CCE0CA;
+}
+#contenido {
+    display: flex;
+    flex-direction: column;
+}
+#Boton {
+    position: relative;
+    width: 47px;
+    height: 47px;
+    background-color: #000000;
+    cursor: pointer;
+}
+
+#BotonIn {
+    position: relative;
+    width: 47px;
+    height: 47px;
+    background-color: #000000;
+}
+#menus {
+    background-color: #30A522;
+    height:93vh;
+    width: 0px;
+    display: none;
+    transition: 0.8s;
+}
+
+a {
+    text-decoration: none;
+}
+p.pp1 {
+    font-size: 20px;
+    color: #000000;
+    text-align: center;
+    position: static;
+    top: 5px;
+    font-family: 'Lucida Sans';
+    font-weight: bold;
+}
+.button {
+    height: 60px;
+    width: 238px;
+    background-color: #E4E4E4;
+    transition: 0.5s;
+    border-radius: 15px;
+    position: initial;
+    margin-right:40px;
+}
+#Botones {
+    list-style: none;
+    position: static;
+    margin-left: -20px;
+    transition: 1s;
+
+
+}
+.button:hover {
+    scale: 1.2;
+    background-color: #FFFFFF;
+}
+html, body{
+    height:100%;
+    margin:0;
+    display: flex;
+    flex-direction: column;
+  }
+
+#MenuHorizontal {
+    position: fixed;
+    width: 100vw;
+    height: 47PX;
+    background-color: #FFFFFF;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+
+#content {
+    display: flex;
+    height: 92.9vh;
+    width: 100vw;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+#ContHome {
+    display: flex;
+    flex-direction: row;
+}
+#Inicio {
+    position: relative;
+    width: 47px;
+    height: 47px;
+    cursor: pointer;
+    background-image: url(./home.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+#Namelast {
+    display: flex;
+    flex-direction: row;
+}
+.nombre {
+    margin: 10px;
+    height: 40px;
+    width: 350px;
+    border: solid 2px #000000;
+    font-size: 25px;
+}
+.correo {
+    margin: 10px;
+    height: 40px;
+    width: 728px;
+    border: solid 2px #000000;
+    font-size: 25px;
+}
+.clave {
+    margin: 10px;
+    height: 40px;
+    width: 350px;
+    border: solid 2px #000000;
+    font-size: 25px;
+}
+.sexo {
+    margin: 10px;
+    height: 46px;
+    width: 360px;
+    border: solid 2px #000000;
+    font-size: 25px;
+}
+#register {
+    margin: 10px;
+    height: 60px;
+    width: 740px;
+    font-size: 25px;
+    cursor: pointer;
+    background-color: #000000;
+    border-radius: 40px;
+    transition: 0.6s;
+}
+#register:hover {
+    scale: 1.1;
+    background-color: #0e0e0e;
+}
+p.pp2 {
+    color: #FFFFFF;
+    font-family:'Trebuchet MS';
+    font-weight: bold;
+    text-align: center;
+    font-size: 30px;
+    margin-top: 12px;
+}
+h1 {
+    font-size: 60px;
+    font-family:'Franklin Gothic Medium';
+    font-weight: bold;
+    margin: 50px;
+}
