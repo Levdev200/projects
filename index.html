@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="xe5OayMxFjacI_KbRCbGkS8BOhhPDZTrt_d9VSNvfYM" />
+    <title>UniCalc - Calculadora Académica</title>
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/themes.css">
+    <script>
+         tailwind.config = {
+            darkMode: 'class',
+        }
+
+        // Check for saved theme preference or system preference
+         if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 transition-colors">
+    <!-- Header -->
+    <header class="bg-blue-600 dark:bg-blue-800 text-white shadow-lg">
+        <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold">UniCalc</h1>
+            <button id="themeToggle" class="p-2 rounded-full hover:bg-blue-700 dark:hover:bg-blue-900">
+                🌙
+            </button>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <!-- Calculator Selection -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+            <button class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow dark:text-white" data-calculator="semester">
+                📊 Promedio Semestral
+            </button>
+            <button class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow dark:text-white" data-calculator="requiredGrade">
+                🎯 Nota Necesaria
+            </button>
+            <button class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow dark:text-white" data-calculator="simulator">
+                💡 Simulador
+            </button>
+        </div>
+
+        <!-- Calculator Container -->
+        <div id="calculatorContainer" class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 dark:text-white">
+            <!-- Calculadora de Promedio Semestral -->
+            <section id="semesterCalculator" class="calculator-section">
+                <h2 class="text-xl font-bold mb-4">Calculadora de Promedio Semestral</h2>
+                <div class="space-y-4">
+                    <!-- Add Subject Button -->
+                    <button id="addSubject" 
+                            class="bg-blue-600 dark:bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-700 dark:hover:bg-blue-600 transition-colors">
+                        + Agregar Materia
+                    </button>
+                    <button id="reset-button-semester" class="bg-red-500 dark:bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-700 dark:hover:bg-red-600 transition-colors">Reiniciar</button>
+                    
+                    <!-- Subjects List -->
+                    <div id="subjectsList" class="space-y-4">
+                        <!-- Subjects will be added here dynamically -->
+                    </div>
+
+                    <!-- Results -->
+                    <div class="mt-6 p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                        <p class="text-lg">Promedio actual: <span id="currentAverage" class="font-bold">0.0</span></p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Calculadora de Nota Necesaria -->
+            <section id="requiredGradeCalculator" class="calculator-section">
+                <h2 class="text-xl font-bold mb-4">Calculadora de Nota Necesaria</h2>
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium mb-1">Nota deseada</label>
+                        <input type="number" id="desiredGrade" class="w-full p-2 border rounded dark:bg-gray-700" min="0" max="5" step="0.1">
+                    </div>
+                    <label class="block text-sm font-medium mb-1">Tus notas</label>
+                    <div id="requiredGrades-list" class="space-y-4">
+                    
+                    </div>
+                    <button id="add-grade-button" class="mt-2 text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300">
+                        + Agregar nota
+                    </button><br>
+                    <button id="Calculate-required" class="bg-blue-600 dark:bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-700 dark:hover:bg-blue-600 transition-colors">
+                        Calcular
+                    </button>
+                    <button id="reset-button-required" class="bg-red-500 dark:bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-700 dark:hover:bg-red-600 transition-colors">Reiniciar</button>
+
+                    <div class="mt-6 p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                        Nota necesaria: <span id="requiredGrade" class="font-bold">0.0</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Simulador de Notas -->
+            <section id="simulatorCalculator" class="calculator-section">
+                <h2 class="text-xl font-bold mb-4">Simulador de Notas</h2>
+                <div class="space-y-4">
+                    <div id="simulationsList" class="space-y-4">
+                        <!-- Las simulaciones se agregarán dinámicamente -->
+                    </div>
+                    <button id="addSimulation" class="bg-blue-600 dark:bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-700 dark:hover:bg-blue-600 transition-colors">
+                        + Agregar Simulación
+                    </button>
+                    <div class="mt-6 p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                        Promedio simulado: <span id="simulatedAverage" class="font-bold">0.0</span>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-100 dark:bg-gray-800 mt-8">
+        <div class="container mx-auto px-4 py-4 text-center text-gray-600 dark:text-gray-300">
+            <p>© 2024 UniCalc - Hecho con ❤️ para estudiantes</p>
+        </div>
+    </footer>
+
+        <!-- Scripts -->
+        <script src="js/main.js"></script>
+        <script src="js/calculators.js"></script>
+        <script src="js/storage.js"></script>
+        <script src="js/simulator.js"></script>
+        <script async="async" data-cfasync="false" src="//pl24982628.profitablecpmrate.com/95a6361d760f212b6214a578f1a724dc/invoke.js"></script>
+        <div id="container-95a6361d760f212b6214a578f1a724dc"></div>
+</body>
+</html>
