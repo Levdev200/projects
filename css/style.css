@@ -1,0 +1,26 @@
+.calculator-section {
+    display: none;
+}
+
+.calculator-section.active {
+    display: block;
+}
+
+/* Transition effects */
+.transition-shadow {
+    transition: all 0.3s ease;
+}
+
+/* Active calculator button */
+button.active {
+    border: 2px solid #2563eb; /* blue-600 */
+}
+
+.calculator-section {
+    display: none;
+}
+
+.calculator-section.active {
+    display: block !important;  /* Aseguramos que se muestre */
+}
+
